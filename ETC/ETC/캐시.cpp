@@ -59,12 +59,11 @@ int solution(int cacheSize, vector<string> cities) {
 
 	return answer;
 }
-
 int main()
 {
 	vector<string> str = { "Jeju","Pangyo", "Seoul","NewYork","LA","Jeju","Pangyo","Seoul","NewYork","LA" };
 	vector<string> str2 = { "Jeju","Pangyo", "Seoul","Jeju","Pangyo","Seoul","Jeju","Pangyo","Seoul" };
 	vector<string> a = { "a","a","c","c","a","A","d","c","f","z" };
-
-	solution(3,a);
+	vector<string> b = { "a","b","c","d","e" };
+	solution(0,b);
 }
