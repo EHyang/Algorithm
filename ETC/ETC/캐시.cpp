@@ -54,7 +54,7 @@ int solution(int cacheSize, vector<string> cities) {
 				}
 			}
 
-		}
+		}l
 	}
 
 	return answer;
