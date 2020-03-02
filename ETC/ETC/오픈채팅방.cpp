@@ -45,3 +45,52 @@ vector<string> solution(vector<string> record) {
 	}
 	return answer;
 }
+
+#include <string>
+#include <vector>
+#include <sstream>
+#include <map>
+using namespace std;
+
+vector<string> solution(vector<string> record) {
+	vector<string> answer;
+	map<string, string> member;
+	vector<pair<string, string>> chat;
+	string cmd, id, name;
+	stringstream ss;
+
+	for (int i = 0; i < record.size(); i++)
+	{
+		ss.str(record[i]);
+		ss >> cmd;
+
+		if (cmd == "Enter")
+		{
+			ss >> id; ss >> name;
+			if (member.find(id) == member.end()) member.insert({ id,name });
+			else member[id] = name;
+
+			chat.push_back({ id, "´ÔÀÌ µé¾î¿Ô½À´Ï´Ù." });
+		}
+		else if (cmd == "Leave")
+		{
+			ss >> id; ss >> name;
+			chat.push_back({ id, "´ÔÀÌ ³ª°¬½À´Ï´Ù." });
+		}
+		else//cmd=="Change"
+		{
+			ss >> id; ss >> name;
+			member[id] = name;
+		}
+
+		ss.clear();
+	}
+
+	for (int i = 0; i < chat.size(); i++)
+	{
+		answer.push_back(member[chat[i].first] + chat[i].second);
+	}
+
+
+	return answer;
+}
