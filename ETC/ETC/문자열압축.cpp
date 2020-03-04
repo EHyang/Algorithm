@@ -2,7 +2,6 @@
 #include <vector>
 #include <sstream>
 
-
 using namespace std;
 
 int solution(string s) {
@@ -67,7 +66,7 @@ int solution(string s) {
 
 int main()
 {
-	solution("aaaaaaaaaaabbbbbbbbbbb");
-	
+	solution("abcabcdede");
+
 	return 0;
 }
