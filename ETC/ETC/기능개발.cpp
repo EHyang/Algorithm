@@ -13,6 +13,9 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
 		progresses[i] = 100 - progresses[i];
 	}
 
+	answer.assign(100,0);
+
+	
 	int idx = 0;
 	int end = progresses.size();
 	while (idx < end)
@@ -52,3 +55,4 @@ int main()
 
 	return 0;
 }
+
