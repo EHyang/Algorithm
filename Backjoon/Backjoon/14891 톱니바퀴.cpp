@@ -6,64 +6,50 @@ using namespace std;
 
 deque<int> dq;
 vector<deque<int>> gear;
+
+int visit[] = { 0,0,0,0 };
+int ro_ch[] = { 0,0,0,0 };
 int result()
 {
-	return gear[0][0]*1 + gear[1][0]*2 + gear[2][0]*4 + gear[3][0]*8;
+	return gear[0][0] * 1 + gear[1][0] * 2 + gear[2][0] * 4 + gear[3][0] * 8;
 }
-void rotation(int num,int dir)
+void rotation()
 {
-	// -1 ¹Ý½Ã 1 ½Ã
-
-	if (dir == -1)
+	for (int i = 0; i < 4; i++)
 	{
-		gear[num].push_back(gear[num].front());
-		gear[num].pop_front();
-	}
-	else
-	{
-		gear[num].push_front(gear[num].back());
-		gear[num].pop_back();
-	}
-}
-void right(int num, int dir)
-{
-	if (num + 1 < 4)
-	{
-		if (gear[num][2] != gear[num + 1][6])
+		visit[i] = 0;
+		if (ro_ch[i] == -1)
 		{
-			right(num + 1, dir*-1);
+			gear[i].push_back(gear[i].front());
+			gear[i].pop_front();
+			ro_ch[i] = 0;
+		}
+		else if(ro_ch[i] == 1)
+		{
+			gear[i].push_front(gear[i].back());
+			gear[i].pop_back();
+			ro_ch[i] = 0;
 		}
 	}
-	rotation(num, dir);
-}
-void left(int num, int dir)
-{
-	if (num - 1 >= 0)
-	{
-		if (gear[num][6] != gear[num - 1][2])
-		{
-			left(num - 1, dir*-1);
-		}
-	}
-	rotation(num, dir);
 }
 void solve(int num, int dir)
 {
-	if (num - 1 >= 0)
+	visit[num] = 1;
+	ro_ch[num] = dir;
+	if (num - 1 >= 0 && !visit[num - 1])
 	{
 		if (gear[num][6] != gear[num - 1][2])
 		{
-			left(num - 1, dir*-1);
+			solve(num - 1, dir*-1);
 		}
 	}
-	if (num + 1 < 4)
+	if (num + 1 < 4 && !visit[num + 1])
 	{
 		if (gear[num][2] != gear[num + 1][6])
 		{
-			right(num + 1, dir*-1);
+			solve(num + 1, dir*-1);
 		}
 	}
-	rotation(num, dir);
 }
 int main()
 {
@@ -71,6 +57,8 @@ int main()
 	cin.tie(0);
 	cout.tie(0);
 	string tmp;
+	int K, num, dir;
+
 	for (int i = 0; i < 4; i++)
 	{
 		cin >> tmp;
@@ -82,15 +70,13 @@ int main()
 		dq.clear();
 	}
 
-	int K, num, dir;
-
 	cin >> K;
 
 	for (int i = 0; i < K; i++)
 	{
 		cin >> num >> dir;
-
-		solve(num-1, dir);
+		solve(num - 1, dir);
+		rotation();
 	}
 
 	cout << result();
