@@ -75,34 +75,70 @@
 //	return 0;
 //}
 
+//#include <iostream>
+//#include <algorithm>
+//#include <vector>
+//
+//using namespace std;
+//
+//int main()
+//{
+//	ios_base::sync_with_stdio(false);
+//	cin.tie(0); cout.tie(0);
+//
+//	int N, M, findNum;
+//
+//	cin >> N;
+//	vector<int> v(N);
+//
+//	for (int i = 0; i < N; i++)
+//		cin >> v[i];
+//
+//	sort(v.begin(), v.end());
+//
+//	cin >> M;
+//
+//	for (int i = 0; i < M; i++)
+//	{
+//		cin >> findNum;
+//
+//		cout << upper_bound(v.begin(), v.end(), findNum) - lower_bound(v.begin(), v.end(), findNum) << " ";
+//	}
+//
+//	return 0;
+//}
+
 #include <iostream>
-#include <algorithm>
-#include <vector>
 
 using namespace std;
+
+int N[10000001][2] = { 0 };
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
-	cin.tie(0); cout.tie(0);
+	cin.tie(0);
+	cout.tie(0);
 
-	int N, M, findNum;
+	int n, m, temp;
 
-	cin >> N;
-	vector<int> v(N);
+	cin >> n;
 
-	for (int i = 0; i < N; i++)
-		cin >> v[i];
-
-	sort(v.begin(), v.end());
-
-	cin >> M;
-
-	for (int i = 0; i < M; i++)
+	for (int i = 0; i < n; i++)
 	{
-		cin >> findNum;
+		cin >> temp;
 
-		cout << upper_bound(v.begin(), v.end(), findNum) - lower_bound(v.begin(), v.end(), findNum) << " ";
+		if (temp >= 0) N[temp][0]++;
+		else N[-temp][1]++;
+	}
+
+	cin >> m;
+	for (int i = 0; i < m; i++)
+	{
+		cin >> temp;
+
+		if (temp >= 0) cout << N[temp][0] << " ";
+		else cout << N[-temp][1] << " ";
 	}
 
 	return 0;
