@@ -17,7 +17,7 @@ int N, M, K;
 
 bool check(int x, int y)
 {
-	return x > 0 && x < N-1  && y > 0 && y < N-1;
+	return x > 0 && x < N - 1 && y > 0 && y < N - 1;
 }
 
 void calc()
@@ -101,8 +101,6 @@ void solve(int time)
 	arrange();
 	solve(time - 1);
 }
-
-
 
 int main()
 {
