@@ -23,13 +23,15 @@ bool re()
 
 void find()
 {
-	for (int i = 0; i < N - 1; i++)
+	for (int i = 0; i < N; i++)
 	{
+		int nxi = i + 1;
+		if (nxi >= N) nxi = 0;
 		if (v[i] != 1 && v[i] != N)
 		{
-			if (v[i + 1] != v[i] + 1 && v[i + 1] != v[i] - 1)
+			if (v[nxi] != v[i] + 1 && v[nxi] != v[i] - 1)
 			{
-				int j = i + 1;
+				int j = nxi;
 				int nj = j + 1;
 				int plusv = v[j] + 1;
 				int minusv = v[j] - 1;
@@ -44,9 +46,9 @@ void find()
 		}
 		else if (v[i] == 1)
 		{
-			if (v[i + 1] != 2 && v[i + 1] != 10)
+			if (v[nxi] != 2 && v[nxi] != 10)
 			{
-				int j = i + 1;
+				int j = nxi;
 				int nj = j + 1;
 				int plusv = v[j] + 1;
 				int minusv = v[j] - 1;
@@ -61,9 +63,9 @@ void find()
 		}
 		else if (v[i] == N)
 		{
-			if (v[i + 1] != 1 && v[i + 1] != N - 1)
+			if (v[nxi] != 1 && v[nxi] != N - 1)
 			{
-				int j = i + 1;
+				int j = nxi;
 				int nj = j + 1;
 				int plusv = v[j] + 1;
 				int minusv = v[j] - 1;
