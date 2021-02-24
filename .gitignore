@@ -337,3 +337,4 @@ ASALocalRun/
 *.out
 *.json
 *.plist
+.DS_Store
