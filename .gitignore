@@ -340,3 +340,5 @@ ASALocalRun/
 .DS_Store
 
 programmers.js
+
+prog-*.js
