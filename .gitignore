@@ -342,3 +342,6 @@ ASALocalRun/
 programmers.js
 
 prog-*.js
+
+bj-input.txt
+bj.base.js
